@@ -1,0 +1,95 @@
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://d157l7jdn8e5sf.cloudfront.net/release/pixi.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+
+
+
+var logoLink = "logo-white.png";
+
+window.onload = function(){var app = new PIXI.Application(800, 600, {backgroundColor : 0x2c3438});
+document.body.appendChild(app.view);
+
+// create a new Sprite from an image path
+var logo = PIXI.Sprite.fromImage(logoLink);
+var container = new PIXI.Container();
+
+var points = [];
+var backgroundPoints = [];
+
+var backgroundSprites = new PIXI.particles.ParticleContainer(10000, {
+    scale: true,
+    position: true,
+    rotation: true,
+    uvs: true,
+    alpha: true
+});
+
+var w = 406, h = 230;
+
+var sprites =  new PIXI.Container();
+                         
+for(var i =0; i< 5000; i++){
+   var point = PIXI.Sprite.fromImage('point.png')
+   point.ox = point.position.x = (400 - w/2) + w*Math.random();
+   point.oy = point.position.y = (300 - h/2) + h*Math.random();
+   point.scale.set(0.5 + Math.random());
+  
+   sprites.addChild(point);
+
+   points.push(point);
+}
+
+for(var i =0; i< 300; i++){
+   var point = PIXI.Sprite.fromImage('point.png')
+   point.ox = point.position.x = 800*Math.random();
+   point.oy = point.position.y = 600*Math.random();
+   //point.scale.set(0.5 + Math.random());
+  
+   backgroundSprites.addChild(point);
+
+   backgroundPoints.push(point);
+}
+
+
+
+
+
+// center the sprite's anchor point
+logo.anchor.set(0.5);
+
+// move the sprite to the center of the screen
+logo.x = app.renderer.width / 2;
+logo.y = app.renderer.height / 2;
+
+app.stage.addChild(logo, sprites, backgroundSprites);
+sprites.mask = logo;
+
+var count = 0;
+
+// Listen for animate update
+app.ticker.add(function(delta) {
+  //var bounds = logo.getBounds();
+  count++;
+    // just for fun, let's rotate mr rabbit a little
+    // delta is 1 if running at 100% performance
+    // creates frame-independent tranformation
+    points.forEach((point, i)=>{
+      //point.alpha = Math.abs(Math.sin((count + i)/30));
+      point.position.x = point.ox + 3*Math.sin((count + i)/30);
+      point.position.y = point.oy + 3*Math.cos((count + i)/30);
+    });
+
+    backgroundPoints.forEach((point, i)=>{
+      point.alpha = Math.abs(Math.sin((count + i)/30));
+    });
+
+});
+}
+</script>
+</body>
+</html>
