@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hyperion 360 tests</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Work+Sans:200,300,400,500" rel="stylesheet">
+	<script type="text/javascript" src="https://two.js.org/third-party/two.js"></script>
+</head>
+<body>
+
+
+	<div class="experiment experiment1">
+		<div class="scene-container">
+			<div class="desc">
+				<div class="control"> 
+					<label for="comparison-toggle">OTHERS</label>
+					<label class="toggle"><input id="comparison-toggle" type="checkbox" onchange="rotate(this.checked)"/></label>
+					<label for="comparison-toggle">HYPERION360</label>
+			</div>
+
+			<div class="explanation">
+				<p class="text-other"> Other companies only focus on how much does the person costs and the performance.</p>
+				<p class="text-hyperion" style="display: none"> Hyperion360 consider all personal traits and evaluate verbal, analytics skills as well as technical. </p>
+			</div>
+		</div>
+
+
+			<div class="scene">
+				<label class="axis-label axis-label-y">Best Price</label>
+				<div class="scene-rotator">
+					<div class="frame frame-0">
+						<div class="axis axis-y"></div>
+						<div class="axis axis-x"></div>
+						<div class="circle circle-other"></div>
+						<label class="axis-label axis-label-x">Performance</label>
+					</div>
+
+					<div class="frame frame-30">
+						<div class="axis axis-y"></div>
+						<div class="axis axis-x"></div>
+						<div class="circle circle-other"></div>
+						<label class="axis-label axis-label-x">Responsiveness</label>
+					</div>
+
+					<div class="frame frame-60">
+						<div class="axis axis-y"></div>
+						<div class="axis axis-x"></div>
+						<div class="circle circle-other"></div>
+						<label class="axis-label axis-label-x">Communication Skills</label>
+					</div>
+
+					<div class="frame frame-90">
+						<div class="axis axis-y"></div>
+						<div class="axis axis-x"></div>
+						<div class="circle circle-other"></div>
+						<label class="axis-label axis-label-x">Analytical Thinking</label>
+					</div>
+
+					<div class="frame frame-120">
+						<div class="axis axis-y"></div>
+						<div class="axis axis-x"></div>
+						<div class="circle circle-other"></div>
+						<label class="axis-label axis-label-x">English Level</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		let rotate = (checked)=>{
+			let elem = document.querySelectorAll('.scene-rotator')[0];
+			let textO = document.querySelector('.text-other');
+			let textH = document.querySelector('.text-hyperion');
+			if (checked){
+				elem.classList.add('rotated');
+				textO.style.display = "none";
+				textH.style.display = "";
+			}else{
+				elem.classList.remove('rotated');
+				textO.style.display = "";
+				textH.style.display = "none";
+			}
+		};
+
+
+		Two.prototype.makeNonagon = function(width, height, sides) {
+
+          width /= 2;
+          height /= 2;
+
+          var shape = this.makePath(
+            _.map(_.range(sides), function(i) {
+              var pct = i / sides;
+              var theta = Math.PI * 2 * pct - Math.PI / 2;
+              var x = width * Math.cos(theta);
+              var y = height * Math.sin(theta);
+              return new Two.Anchor(x, y);
+            })
+          );
+
+          return shape;
+
+        };
+
+	</script>
+</body>
+</html>

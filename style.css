@@ -4,9 +4,9 @@ html, body{
 }
 
 body{
-	background: #2c3438;
-	color: white;
-	font-family: 'Ubuntu', sans-serif;
+	background: white;
+	color: #1A2C40;
+	font-family: 'Work Sans', sans-serif;
 }
 
 .experiment{
@@ -18,15 +18,59 @@ body{
 .control{
 	text-align: center;
 	padding: 5px 0;
-	margin-bottom: 10px;
+	margin: 10px 0;
+}
+
+.toggle input {
+    -webkit-appearance: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.5);
+    margin: 0;
+    background-image: linear-gradient(white, hsla(0, 0%, 97%, 1));
+    outline: none;
+}
+
+.toggle input:checked{
+    -webkit-transform: translate(100%);
+}
+
+label.toggle {
+    width: 68px;
+    padding: 2px;
+    background: #efefef;
+    display: inline-block;
+    border-radius: 37px;
+    text-align: left;
+    box-shadow: inset 0 1px 1px hsla(0, 0%, 0%, 0.3);
+    box-sizing: border-box;
+    vertical-align: middle;
+    line-height: 0;
+}
+
+label.company{
+	color: gold;
 }
 
 .explanation{
 	font-weight: 300;
+	max-width: 380px;
+	min-height: 150px;
+	font-size: 24px;
+	font-weight: 300;
+	line-height: 34px;
+}
+
+.explanation p{
+	min-height: 150px;
 }
 
 .scene-container{
 	text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .scene{
@@ -38,7 +82,7 @@ body{
 	padding: 20px;
 	display: inline-block;
 	margin-right: 100px;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.7);
+	margin-left: 140px;
 }
 
 .scene-rotator{
@@ -99,14 +143,14 @@ body{
 	top: 0;
 	left: 0;
     height: 100%;
-    border-left: 1px dashed;
+    border-left: 1px solid;
 }
 
 .axis-x{
 	left: 0;
     top: 100%;
     width: 100%;
-    border-top: 1px dashed;
+    border-top: 1px solid;
 }
 
 .axis-label {
@@ -131,7 +175,7 @@ body{
     border-radius: 50%;
     width: 40%;
     height: 40%;
-    border: 2px solid;
+    border: 2px dashed;
     position: absolute;
     left: 60%;
     top: 10%;
